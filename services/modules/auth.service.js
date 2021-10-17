@@ -6,6 +6,13 @@ async function login(email, password){
     }
     return {user, session}
 }
+async function logout() {
+    const { error } = await supabase.auth.signOut()
+    if(error) {
+        throw error
+    }
+}
+
 async function signup(email, password){
     const {user, session, error} = await supabase.auth.signUp({email, password})
     if(error){
@@ -14,7 +21,13 @@ async function signup(email, password){
     return {user, session}
 }
 
+function getSession() {
+    return supabase.auth?.session() ? supabase.auth?.session() : null
+}
+
 export default {
     login,
+    logout,
     signup,
+    getSession
 }

@@ -5,6 +5,7 @@
       <v-text-field v-model="password" label="Contraseña" type="password" outlined class="signup__field" color="primary" />
       <v-text-field v-model="repeatPassword" label="Repetir Contraseña" type="password" outlined class="signup__field" color="primary" />
       <v-btn block color="primary" @click="signup">Registrarse</v-btn>
+      <nuxt-link class="mt-5" :to="{ name:'login'}">Ingresa</nuxt-link>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 import auth from "@/services/modules/auth.service"
 export default {
     name:'Signup',
+    layout: 'login',
     data(){
         return{
             user:'',            
