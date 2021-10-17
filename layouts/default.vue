@@ -8,6 +8,7 @@
     <v-container>
       <Nuxt />
     </v-container>
+    <sender class="sender" />
   </v-app>
 </template>
 
@@ -35,11 +36,20 @@ export default {
 <style lang="scss" scoped>
   .navigation {
     max-height: 200px;
+    position: fixed;
+    top: 0;
   }
   .container{
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    overflow: scroll;
+    padding-bottom: 10rem;
+    padding-top: 5rem;
+  }
+  .sender {
+    position: fixed;
+    bottom: 0;
   }
 </style>
