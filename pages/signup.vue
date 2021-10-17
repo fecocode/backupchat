@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import auth from "@/services/modules/auth.service"
 export default {
     name:'Signup',
     data(){
@@ -19,8 +20,19 @@ export default {
         }
     },
     methods:{
-        signup(){
-            console.log(`usuario: ${this.user} password: ${this.password} repeatPassword: ${this.repeatPassword}`);
+        async signup(){
+            if (this.repeatPassword === this.password){
+                try{
+                    const userData = await auth.signup(this.user, this.password)
+                    console.log(userData);
+                }
+                catch(error){
+                    console.log(error);
+                }
+            }
+            else{
+                alert("Contraseñas desiguales");
+            }
         }
     }
     

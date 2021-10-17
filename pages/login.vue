@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import auth from "@/services/modules/auth.service"
 export default {
     name: 'LoginPage',
     data(){
@@ -17,8 +18,14 @@ export default {
         }
     },
     methods: {
-        login(){
-            console.log(`Usuario: ${this.user}, password: ${this.password}`);
+        async login(){
+            try{
+                const userData = await auth.login(this.user, this.password)
+                console.log(userData)
+            }
+            catch(error){
+                console.log(error);
+            }
         }
     },
 }
